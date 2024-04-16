@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package arbitrage;
+
+option go_package = "/pkg/proto";
+
+// The currency price message
+message CurrencyPrice {
+    string currencyPair = 1;
+    double price = 2;
+}
+
+// The service definition
+service ArbitrageService {
+    // Sends currency pricing data to the arbitrage service
+    rpc SendCurrencyPrice (CurrencyPrice) returns (Acknowledge) {}
+}
+
+// Acknowledgement message
+message Acknowledge {
+    string message = 1;
+}
